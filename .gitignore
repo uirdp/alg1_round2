@@ -1,0 +1,7 @@
+*.exe
+*.json
+*.cache
+*.sqlite
+*.vsidx
+*.locl
+*.wsuo
