@@ -17,8 +17,8 @@ uint32_t ALU_Adder(uint32_t a, uint32_t b){
 
 int main(){
 
-    float f1 {1.5f} ;
-    float f2  {10.5f} ;
+    float f1 {2.5f} ;
+    float f2  {2.9f} ;
 
     //uint32_tは符号なし３２ビットの整数
     std::optional<uint32_t> bit1 {ConvertFloatBitsToUint(f1)};
@@ -38,7 +38,7 @@ int main(){
 
     std::cout << std::bitset<32>(result) << std::endl;
     
-    std::optional<float> f3 {result};
+    std::optional<float> f3 {ConvertBitsToFloat(result)};
     std::optional<uint32_t> bit3 {ConvertFloatBitsToUint(f3.value())};
 
     if(f3){
