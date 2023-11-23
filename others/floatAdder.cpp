@@ -64,13 +64,17 @@ uint32_t FixedALU_Adder(uint32_t a, uint32_t b){
     std::cout << std::bitset<23>(mantissa) << std::endl;
     std::cout << std::bitset<23>(mantissa2) << std::endl;
 
-    return res;
+    //this works, but why?
+    uint32_t offset = 0b1;
+    offset = offset << (23 - shiftCount);
+
+    return res + offset;
 }
 
 int main(){
 
-    float f1 {12.523f} ;
-    float f2  {2.9f} ;
+    float f1 {170.523f} ;
+    float f2  {1.9f} ;
 
     //uint32_tは符号なし３２ビットの整数
     std::optional<uint32_t> bit1 {ConvertFloatBitsToUint(f1)};
