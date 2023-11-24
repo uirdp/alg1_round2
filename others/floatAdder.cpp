@@ -41,30 +41,21 @@ uint32_t FixedALU_Adder(uint32_t a, uint32_t b){
 
 
     sign = a >> 31;
-    sign2 = b >> 31;
-
 
     exp = (a << 1) >> 24;
     exp2 = (b << 1) >> 24;
 
-    int shiftCount = 0;
-    while(exp != exp2){
-        ++exp2;
-        ++shiftCount;
-    }
-
+    //指数部が一致するまで大きくする
+    int shiftCount = exp - exp2;
     mantissa = (a << 9) >> 9;
 
     mantissa2 = (b << 9) >> 9;
     mantissa2 = mantissa2 >> shiftCount;
 
-    //符号を直さないと
-    //std::cout << std::bitset<23>(mantissa2);
     uint32_t res = std::stoull(ToString(sign, exp, (mantissa + mantissa2)), nullptr, 2);
     std::cout << std::bitset<23>(mantissa) << std::endl;
     std::cout << std::bitset<23>(mantissa2) << std::endl;
 
-    //this works, but why?
     uint32_t offset = 0b1;
     offset = offset << (23 - shiftCount);
 
@@ -85,7 +76,7 @@ int main(){
         std::cout << f1 << ':' << std::bitset<32>(bit1.value()) << std::endl;
         a = bit1.value();
 
-        std::cout << f2 << ":   " << std::bitset<32>(bit2.value()) << std::endl;
+        std::cout << f2 << ":    " << std::bitset<32>(bit2.value()) << std::endl;
         b = bit2.value();
     }
 
