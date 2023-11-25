@@ -1,10 +1,4 @@
-/*論回でつくったALUの加算機にそのまま浮動小数点を突っ込んでみる。
- *当然、仮数部から指数部（E -> Sも）への桁上げが発生すること、指
- *数部の多きさによって仮数部の重みが違うことから、正しい演算結果
- *は得られない 
- */
-
-
+//浮動小数点数の計算をビット単位で行うプログラム
 #include <iostream>
 #include <stdint.h>
 #include <optional>
@@ -39,23 +33,23 @@ uint32_t FixedALU_Adder(uint32_t a, uint32_t b){
     uint32_t sign, exp, mantissa;
     uint32_t sign2, exp2, mantissa2;
 
-
+    //分離する
     sign = a >> 31;
 
     exp = (a << 1) >> 24;
     exp2 = (b << 1) >> 24;
 
-    //指数部が一致するまで大きくする
-    int shiftCount = exp - exp2;
     mantissa = (a << 9) >> 9;
 
+    int shiftCount = exp - exp2;
     mantissa2 = (b << 9) >> 9;
-    mantissa2 = mantissa2 >> shiftCount;
+    mantissa2 = mantissa2 >> (shiftCount);
 
     uint32_t res = std::stoull(ToString(sign, exp, (mantissa + mantissa2)), nullptr, 2);
     std::cout << std::bitset<23>(mantissa) << std::endl;
     std::cout << std::bitset<23>(mantissa2) << std::endl;
 
+    //(1+ M) * 1/2^nより
     uint32_t offset = 0b1;
     offset = offset << (23 - shiftCount);
 
@@ -64,7 +58,7 @@ uint32_t FixedALU_Adder(uint32_t a, uint32_t b){
 
 int main(){
 
-    float f1 {170.523f} ;
+    float f1 {170001.523123f} ;
     float f2  {1.9f} ;
 
     //uint32_tは符号なし３２ビットの整数
