@@ -7,6 +7,7 @@
 #include <sstream>
 #include <algorithm>
 
+//nのアドレスにuint型のポインタをキャスト
 std::optional<uint32_t> ConvertFloatBitsToUint(float n){
     return (uint32_t)(*(uint32_t*)&n);
 }
