@@ -24,7 +24,7 @@ public:
 
 };
 
-class DoublyLikedList {
+class DoublyLinkedList {
 
 private:
     Node nil;
@@ -32,7 +32,7 @@ private:
 
 public:
 
-	DoublyLikedList() : current_node{ nullptr }{}
+	DoublyLinkedList() : current_node{ nullptr }{}
 
 	Node* linearSearch(const int search_val) {
 
@@ -99,7 +99,7 @@ void LinkedListApplication() {
 	using std::cin;
 	using std::string;
 
-	DoublyLikedList dll;
+	DoublyLinkedList dll;
 
 	int num_of_command;
 	cin >> num_of_command;

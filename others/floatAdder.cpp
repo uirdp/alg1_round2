@@ -59,7 +59,7 @@ uint32_t FixedALU_Adder(uint32_t a, uint32_t b){
 
 int main(){
 
-    float f1 {170001.523123f} ;
+    float f1 {171.523f} ;
     float f2  {1.9f} ;
 
     //uint32_tは符号なし３２ビットの整数

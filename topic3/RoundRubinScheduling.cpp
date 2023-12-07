@@ -49,10 +49,10 @@ void RoundRubinScheduling() {
 		string name;
 		cin >> name;
 
-		int time;
-		cin >> time;
+		int time_required;
+		cin >> time_required;
 
-		Process process(name, time);
+		Process process(name, time_required);
 		process_queue.push(process);
 	}
 
