@@ -17,7 +17,7 @@ struct Point{
     double y;
 };
 
-void koch(int n, Point p1, Point p2){
+void koch(int n, const Point& p1, const Point& p2){
 
     if(n == 0) return;
 
