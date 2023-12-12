@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int solve(int i, int m, int n, vector<int>& A){
+int solve(int i, int m, int n, const vector<int>& A){
 
     if(m == 0) return 1;
     if(i >= n) return 0;
